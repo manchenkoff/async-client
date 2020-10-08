@@ -1,11 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
-from PyInstaller.building.api import PYZ, EXE
+from PyInstaller.building.api import EXE, PYZ
 from PyInstaller.building.build_main import Analysis
 
 block_cipher = None
-application_name = 'async-client'
+application_name = 'async_client'
+entry_point = 'src/main.py'
 
-a = Analysis(['main.py'],
+a = Analysis([entry_point],
              pathex=['./'],
              binaries=[],
              datas=[],

@@ -1,17 +1,19 @@
-COLOR_HEADER=\e[92m
-COLOR=\e[93m
-END=\033[0m
-PROJECT_NAME := AsyncClient
+.DEFAULT_GOAL := help
+.PHONY: help clean build
 
-.SILENT: help clean build
+help: ## Show this message
+	@echo "Application management"
+	@echo
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-help:
-	printf "$(COLOR_HEADER)$(PROJECT_NAME) management\n\n" && \
-	printf "$(COLOR)make help$(END)\t Show this message\n" && \
-	printf "$(COLOR)make build$(END)\t Build application distributive directory\n" && \
+sync: ## Install dependencies
+	@pipenv sync
 
-clean:
+clean: ## Clean up distributable files
 	@rm -Rf ./build ./dist
 
-build: clean
-	@pyinstaller main.spec
+build: clean ## Build application
+	@pipenv run pyinstaller main.spec
+
+run: ## Run application
+	@cd src/ && pipenv run python -m main

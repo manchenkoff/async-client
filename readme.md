@@ -11,7 +11,7 @@ Just download and run `make build` then use executable file from `dist` director
 To start a connection run the following command in the terminal / command line:
 
 ```bash
-async-client --host=127.0.0.1 --port=8888
+async-async_client --host=127.0.0.1 --port=8888
 ```
 
 ## Project installation
