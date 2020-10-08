@@ -21,5 +21,5 @@ sync                           Install dependencies
 To start a connection run the following command in the terminal / command line:
 
 ```bash
-async-async_client --host=127.0.0.1 --port=8888
+async_client --host=127.0.0.1 --port=8888
 ```
